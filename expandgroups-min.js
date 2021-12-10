@@ -1,1 +1,17 @@
-var expandGroups;(expandGroups=function(){let r=$('datatable-row-wrapper.datatable-row-wrapper');const rOffs=[];r.each(function(){const o=$(this).find('span').eq(2).text().trim();rOffs.push(Number(o.slice(o.indexOf("Total")+7,o.length-1)))});console.log('[bitcap-expandgroups] Expanding groups...');let rPtn=0;for(let o=0;o<rOffs.length;o+=1){$(r[rPtn]).find('i.fa-chevron-right').click();r=$('datatable-row-wrapper.datatable-row-wrapper');rPtn+=rOffs[o]+1}console.log('[bitcap-expandgroups] Done!')})();
+var expandGroups;
+(expandGroups = function () {
+    let rA = Array.from(document.getElementsByClassName('datatable-row-wrapper'));
+    const rOffs = [];
+    for (let r in rA) {
+    	const t = rA[r].querySelectorAll('span')[2].textContent.trim();
+        rOffs.push(Number(t.slice(t.indexOf("Total") + 7, t.length - 1)));
+    };
+    console.log('[bitcap-expandgroups] Expanding groups...');
+    let rP = 0;
+    for (let o = 0; o < rOffs.length; o++) {
+        rA[rP].querySelector('i.fa-chevron-right').click();
+        rA = Array.from(document.getElementsByClassName('datatable-row-wrapper'));
+        rP += rOffs[o] + 1;
+    }
+    console.log('[bitcap-expandgroups] Done!');
+})();
