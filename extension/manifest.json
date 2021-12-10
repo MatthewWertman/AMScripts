@@ -8,7 +8,19 @@
   },
   "permissions": ["activeTab", "scripting"],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/icons/AMScriptExt_16.png",
+      "32": "/images/icons/AMScriptExt_32.png",
+      "48": "/images/icons/AMScriptExt_48.png",
+      "128": "/images/icons/AMScriptExt_128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/icons/AMScriptExt_16.png",
+    "32": "/images/icons/AMScriptExt_32.png",
+    "48": "/images/icons/AMScriptExt_48.png",
+    "128": "/images/icons/AMScriptExt_128.png"
   },
   "commands": {
     "expandGroups": {
