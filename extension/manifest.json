@@ -9,5 +9,15 @@
   "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html"
+  },
+  "commands": {
+    "expandGroups": {
+        "suggested_key": "Ctrl+Shift+X",
+        "description": "Expands all groups"
+    },
+    "collapseGroups": {
+        "suggested_key": "Ctrl+Shift+Q",
+        "description": "Collapses all groups"
+    }
   }
 }
