@@ -2,7 +2,7 @@
 let expandGroups = document.getElementById("expandGroupsBtn");
 
 expandGroups.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true, url: "https://cloud.awesomeminer.com/miners" });
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true, url: ["https://cloud.awesomeminer.com/miners", "http://192.168.101.100:17790/miners"] });
 
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
