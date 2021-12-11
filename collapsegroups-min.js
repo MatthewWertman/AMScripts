@@ -1,0 +1,1 @@
+let r=document.getElementsByClassName("fa-chevron-down");const l=r.length;var i=0;console.log("[bitcap-collapsegroups] Collapsing groups...");var w=function(){for(;i<l;i++)if(r[0].click(),i+1<l&&i%100==0){setTimeout(w,5);break}};w(),console.log("[bitcap-collapsegroups] Done!");
