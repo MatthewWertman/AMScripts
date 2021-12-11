@@ -16,23 +16,31 @@ chrome.commands.onCommand.addListener(async (command) => {
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
             function: exec,
-            args: ["datatable-row-wrapper", "fa-chevron-right", "bitcap-expandgroups", "Expanding"]
+            args: ["fa-chevron-right", "bitcap-expandgroups", "Expanding"]
         });
     } else if (command === "collapseGroups") {
         chrome.scripting.executeScript({
             target: {tabId: tab.id},
             function: exec,
-            args: ["datatable-row-wrapper", "fa-chevron-down", "bitcap-collapsegroups", "Collapsing"]
+            args: ["fa-chevron-down", "bitcap-collapsegroups", "Collapsing"]
         });
     }
 });
 
-function exec(class1, class2, utilName, actionString) {
-    const rowCount = document.getElementsByClassName(class1).length;
+function exec(class2, utilName, actionString) {
     let rows = document.getElementsByClassName(class2);
+    const length = rows.length;
+    let index = 0;
     console.log(`[${utilName}] ${actionString} groups...`);
-    for (let i = 0; i < rowCount; i++) {
+    var worker = function() {
+      for (; index < length; index++) {
         rows[0].click();
-    }
+        if (index + 1 < length && index % 100 == 0) {
+            setTimeout(worker, 5);
+            break;
+        }
+      }
+    };
+    worker();
     console.log(`[${utilName}] Done!`);
 }
