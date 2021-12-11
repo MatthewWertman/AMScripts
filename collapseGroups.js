@@ -1,5 +1,7 @@
  // A simple and "hacky" function that COLLAPSES all group header rows in AM Cloud.
-// withj the added measure for not locking the website.
+// with the added measure for not locking the website.
+// thanks to Helgi on stackoverflow for the code snippet
+//https://stackoverflow.com/a/719599
 // Author: MatthewWertman
 // Date created: 12/10/21
 let rows = document.getElementsByClassName("fa-chevron-down");
