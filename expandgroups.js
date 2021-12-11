@@ -2,7 +2,7 @@
 // KNOWN Issues:
 //  - Limited to working with no active filtering;
 // Author: MatthewWertman
-// Date created: 10/30/21
+// Date created: 11/30/21
 var expandGroups;
 (expandGroups = function () {
     // get all group header rows
