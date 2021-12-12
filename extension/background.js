@@ -33,13 +33,13 @@ function exec(class2, utilName, actionString) {
     let index = 0;
     console.log(`[${utilName}] ${actionString} groups...`);
     var worker = function() {
-      for (; index < length; index++) {
-        rows[0].click();
-        if (index + 1 < length && index % 100 == 0) {
-            setTimeout(worker, 5);
-            break;
+        for (; index < length; index++) {
+            rows[0].click();
+            if (index + 1 < length && index % 100 == 0) {
+                setTimeout(worker, 5);
+                break;
+            }
         }
-      }
     };
     worker();
     console.log(`[${utilName}] Done!`);
