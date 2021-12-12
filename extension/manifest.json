@@ -28,7 +28,7 @@
         "description": "Expands all groups"
     },
     "collapseGroups": {
-        "suggested_key": "Ctrl+Shift+Q",
+        "suggested_key": "Ctrl+Shift+Z",
         "description": "Collapses all groups"
     }
   }
