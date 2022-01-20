@@ -1,4 +1,11 @@
 // background.js
+var isBtnsLoaded = true
+try {
+  var exGroupsBtn = document.getElementById("exGroupsBtn")
+  var collGroupsBtn = document.getElementById("collGroupsBtn")
+} catch (err) {
+  isBtnsLoaded = false
+}
 const tabQuery = {
     active: true,
     currentWindow: true,
@@ -26,6 +33,25 @@ chrome.commands.onCommand.addListener(async (command) => {
         });
     }
 });
+// button listeners
+if (isBtnsLoaded) {
+  exGroupsBtn.addEventListener("click", async () => {
+    let [tab] = await chrome.tabs.query(tabQuery)
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: exec,
+      args: ["fa-chevron-right", "bitcap-expandgroups", "Expanding"]
+    })
+  });
+  collGroupsBtn.addEventListener("click", async () => {
+    let [tab] = await chrome.tabs.query(tabQuery)
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: exec,
+      args: ["fa-chevron-down", "bitcap-collapsegroups", "Collapsing"]
+    })
+  });
+}
 
 function exec(class2, utilName, actionString) {
     let rows = document.getElementsByClassName(class2);
@@ -44,3 +70,4 @@ function exec(class2, utilName, actionString) {
     worker();
     console.log(`[${utilName}] Done!`);
 }
+
