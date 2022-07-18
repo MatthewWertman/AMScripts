@@ -78,14 +78,13 @@ function exec(class2, utilName, actionString) {
     let index = 0;
     console.log(`[${utilName}] ${actionString} groups...`);
     var worker = function() {
-        for (; index < length; index++) {
-            rows[0].click();
-            if (index + 1 < length && index % 100 == 0) {
-                setTimeout(worker, 5);
-                break;
-            }
-        }
+        try {
+            rows[0].click()
+        } catch (err) {}
     };
     worker();
+    for (; index < length; index++) {
+        setTimeout(worker, 5);
+    }
     console.log(`[${utilName}] Done!`);
 }
