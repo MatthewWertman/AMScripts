@@ -1,4 +1,6 @@
 // background.js
+import { config } from './config.js';
+
 var isBtnsLoaded = true
 try {
   var exGroupsBtn = document.getElementById("exGroupsBtn")
@@ -9,7 +11,7 @@ try {
 const tabQuery = {
     active: true,
     currentWindow: true,
-    url: ["https://cloud.awesomeminer.com/miners", "http://192.168.101.100:17790/miners"]
+    url: config.valid_urls
 }
 
 chrome.runtime.onInstalled.addListener(() => {
