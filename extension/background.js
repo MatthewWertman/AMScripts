@@ -10,7 +10,7 @@ try {
 const tabQuery = {
     active: true,
     currentWindow: true,
-    url: ["https://cloud.awesomeminer.com/miners", "http://192.168.101.100:17790/miners"]
+    url: ["https://cloud.awesomeminer.com/miners"]
 }
 
 chrome.runtime.onInstalled.addListener(() => {
