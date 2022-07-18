@@ -70,6 +70,9 @@ if (isBtnsLoaded) {
         })
     });
 }
+
+function goHome() {
+    window.scroll(0, 0);
 }
 
 function exec(class2, utilName, actionString) {
