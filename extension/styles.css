@@ -1,6 +1,13 @@
+html {
+	height: 550px;
+	width: 160px;
+}
+body {
+	margin: 8px;
+}
 .footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 95%;
     height: 2.5rem;
 }
