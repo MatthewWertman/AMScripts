@@ -1,10 +1,11 @@
 // background.js
 var isBtnsLoaded = true
 try {
-  var exGroupsBtn = document.getElementById("exGroupsBtn")
-  var collGroupsBtn = document.getElementById("collGroupsBtn")
+    var exGroupsBtn = document.getElementById("exGroupsBtn");
+    var collGroupsBtn = document.getElementById("collGroupsBtn");
+    var homeBtn = document.getElementById("homeBtn");
 } catch (err) {
-  isBtnsLoaded = false
+    isBtnsLoaded = false
 }
 const tabQuery = {
     active: true,
@@ -21,13 +22,17 @@ chrome.commands.onCommand.addListener(async (command) => {
     let [tab] = await chrome.tabs.query(tabQuery);
     if (command === "expandGroups") {
         chrome.scripting.executeScript({
-            target: { tabId: tab.id },
+            target: {
+                tabId: tab.id
+            },
             function: exec,
             args: ["fa-chevron-right", "bitcap-expandgroups", "Expanding"]
         });
     } else if (command === "collapseGroups") {
         chrome.scripting.executeScript({
-            target: {tabId: tab.id},
+            target: {
+                tabId: tab.id
+            },
             function: exec,
             args: ["fa-chevron-down", "bitcap-collapsegroups", "Collapsing"]
         });
@@ -35,22 +40,36 @@ chrome.commands.onCommand.addListener(async (command) => {
 });
 // button listeners
 if (isBtnsLoaded) {
-  exGroupsBtn.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query(tabQuery)
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: exec,
-      args: ["fa-chevron-right", "bitcap-expandgroups", "Expanding"]
-    })
-  });
-  collGroupsBtn.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query(tabQuery)
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: exec,
-      args: ["fa-chevron-down", "bitcap-collapsegroups", "Collapsing"]
-    })
-  });
+    exGroupsBtn.addEventListener("click", async () => {
+        let [tab] = await chrome.tabs.query(tabQuery)
+        chrome.scripting.executeScript({
+            target: {
+                tabId: tab.id
+            },
+            function: exec,
+            args: ["fa-chevron-right", "bitcap-expandgroups", "Expanding"]
+        })
+    });
+    collGroupsBtn.addEventListener("click", async () => {
+        let [tab] = await chrome.tabs.query(tabQuery)
+        chrome.scripting.executeScript({
+            target: {
+                tabId: tab.id
+            },
+            function: exec,
+            args: ["fa-chevron-down", "bitcap-collapsegroups", "Collapsing"]
+        })
+    });
+    homeBtn.addEventListener("click", async () => {
+        let [tab] = await chrome.tabs.query(tabQuery);
+        chrome.scripting.executeScript({
+            target: {
+                tabId: tab.id
+            },
+            function: goHome,
+        })
+    });
+}
 }
 
 function exec(class2, utilName, actionString) {
@@ -70,4 +89,3 @@ function exec(class2, utilName, actionString) {
     worker();
     console.log(`[${utilName}] Done!`);
 }
-
